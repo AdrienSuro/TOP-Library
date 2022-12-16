@@ -1,0 +1,18 @@
+.main-container {
+    display: grid;
+    grid-template-rows: repeat(autofit(150px));
+    grid-template-columns: repeat(autofit(200px));
+    grid-auto-flow: column;
+    gap: 10px;
+    width: 900px;
+}
+
+.main-container > * {
+    min-width: 0;
+    min-height: 0;
+}
+
+.main-container > div {
+    border: solid 5px red;
+    width: 200px;
+}
