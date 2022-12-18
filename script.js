@@ -37,8 +37,6 @@ const book4 = new Book("Voyage au bout de la nuit", "Céline", 1932, "yes", 8.0)
 const book5 = new Book("Flash", "Charles Duchaussois", 1970, "yes", 7.0);
 const book6 = new Book("Love", "Charles Duchaussois", 1970, "yes", 7.0);
 
-
-
 //Add books to the array
 addConstructorToArray(book1);
 addConstructorToArray(book2);
@@ -46,8 +44,6 @@ addConstructorToArray(book3);
 addConstructorToArray(book4);
 addConstructorToArray(book5);
 addConstructorToArray(book6);
-
-
 
 
 //Loop over the array : 
