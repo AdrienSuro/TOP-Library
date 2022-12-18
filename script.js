@@ -48,5 +48,17 @@ addConstructorToArray(book6);
 //Loop over the array : 
 constructorsArray.forEach(displayBook);
 
+//Show form on click :
+const addForm = document.getElementById("add-form");
+const addButton = document.getElementById("add-button");
+const closeForm = document.getElementById("close-form");
+addButton.addEventListener("click", showForm);
+closeForm.addEventListener("click", hideForm);
 
+function showForm() {
+  addForm.style.display = "grid";
+}
+function hideForm() {
+  addForm.style.display = "none";
+}
 
