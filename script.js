@@ -25,6 +25,7 @@ function displayBook(array) {
       <p>Title : ${array.title}</p>
       <p>Name : ${array.name}</p>
       <p>Year : ${array.year}</p>
+      <p>Rating : ${array.rating}</p>
   </div>`;
 }
 
@@ -34,7 +35,7 @@ const book2 = new Book("Nana", "Emile Zola", 1879, 8.0);
 const book3 = new Book("Lolita", "Vladimir Nabokov", 1955, 8.5);
 const book4 = new Book("Voyage au bout de la nuit", "Céline", 1932, 8.0);
 const book5 = new Book("Flash", "Charles Duchaussois", 1970, 7.0);
-const book6 = new Book("Love", "Charles Duchaussois", 1970, 7.0);
+// const book6 = new Book("Love", "Charles Duchaussois", 1970, 7.0);
 
 //Add books to the array
 addConstructorToArray(book1);
@@ -42,7 +43,17 @@ addConstructorToArray(book2);
 addConstructorToArray(book3);
 addConstructorToArray(book4);
 addConstructorToArray(book5);
-addConstructorToArray(book6);
+addConstructorToArray(new Book("Love", "Charles Duchaussois", 1970, 7.0));
+
+function grabBookInfo () {
+  addConstructorToArray(new Book(document.getElementById("title").value, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("rating").value));
+  var child = mainContainer.lastElementChild; 
+        while (child) {
+            mainContainer.removeChild(child);
+            child = mainContainer.lastElementChild;
+  constructorsArray.forEach(displayBook);
+}
+}
 
 
 //Loop over the array : 
@@ -52,13 +63,14 @@ constructorsArray.forEach(displayBook);
 const addForm = document.getElementById("add-form");
 const addButton = document.getElementById("add-button");
 const closeForm = document.getElementById("close-form");
+const addToMyBooksButton = document.getElementById("addToMyBooks");
 addButton.addEventListener("click", showForm);
 closeForm.addEventListener("click", hideForm);
+addToMyBooksButton.addEventListener("click", grabBookInfo);
 
 function showForm() {
   addForm.style.display = "grid";
-}
+};
 function hideForm() {
   addForm.style.display = "none";
-}
-
+};
