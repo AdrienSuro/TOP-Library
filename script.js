@@ -1,10 +1,16 @@
 //Array to store the constructors : 
 const constructorsArray = [];
+let numberOfBooks = 0;
+const removersArray = [];
 
 //Function that adds constructors to the above array : 
 function addConstructorToArray(constructor) {
   constructorsArray.push(constructor);
-}
+};
+
+function addRemoverToArray(remover) {
+  removersArray.push(remover)
+};
 
 //Constructor
 function Book(title, name, year, rating) {
@@ -14,20 +20,31 @@ function Book(title, name, year, rating) {
   this.rating = rating;
 }
 
-//DOM Manipulation : 
-
+function RemoverArray(bookNumber, targetCross) {
+  this.delete = document.getElementById(`book-container${bookNumber}`);
+  this.grab = document.getElementById(`remove-book${targetCross}`);
+  this.action = function() {
+    this.delete.remove()
+  };
+  this.event = function() {
+    this.grab.addEventListener("click", this.action)
+  }
+}
 
 //Function to add books to the DOM : 
 function displayBook(array) {
+  numberOfBooks += 1;
   mainContainer.innerHTML += 
-  `<div id="book-container">
-      <img src="img/close.png" id="remove-book">
+  `<div id=book-container${numberOfBooks} >
+      <img src="img/close.png" id="remove-book${numberOfBooks}">
       <p>Title : ${array.title}</p>
       <p>Name : ${array.name}</p>
       <p>Year : ${array.year}</p>
       <p>Rating : ${array.rating}</p>
   </div>`
 };
+
+var element = document.body.querySelector('.element[data-id="123456789"]')
 
 const mainContainer = document.getElementById("main-container");
 const addForm = document.getElementById("add-form");
@@ -45,10 +62,11 @@ closeForm.addEventListener("click", function hideForm() {
 });
 addToMyBooksButton.addEventListener("click", function grabBookInfo () {
   addConstructorToArray(new Book(document.getElementById("title").value, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("rating").value));
+  numberOfBooks += 1;
+  addRemoverToArray(new RemoverArray(numberOfBooks, numberOfBooks));
   addForm.style.display = 'none';
   mainContainer.innerHTML = "";
   constructorsArray.forEach(displayBook);
   addForm.reset();
 });
-
 

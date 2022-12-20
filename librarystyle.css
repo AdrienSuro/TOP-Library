@@ -4,6 +4,7 @@
     --text-emphasis: rgb(53,107,189);
     --text-light: rgb(163,163,163);
     font-family: 'Comfortaa', 'Nunito';
+    font-size: 12px;
 }
 
 body {
@@ -24,8 +25,8 @@ h2 {
 
 .header {
     display: grid;
-    width: 70vw;
-    height: 150px;
+    width: calc(40vw + 14rem);
+    height: calc(100px + 5vw);
     grid-template-columns: 2fr 8fr;
     grid-template-rows: 1fr 0.8fr;
     min-width: 0;
@@ -100,7 +101,7 @@ h2 {
     grid-auto-rows: 200px;
     grid-auto-flow: dense;
     gap: 10px;
-    width: 70vw;
+    width: calc(40vw + 14rem);
     min-width: 0;
     min-height: 0;
     margin-left: auto;
@@ -122,7 +123,7 @@ h2 {
 
 .section-title {
     display: grid;
-    width: 70vw;
+    width: calc(40vw + 14rem);
     margin: auto;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
@@ -141,17 +142,26 @@ h2 {
     font-size: 1.1rem;
 }
 
-#book-container {
+[id^='book-container'] {
     display: grid;
-    grid-template-rows: 30px, repeat(4, 30px);
+    grid-template-rows: 20px, repeat(4, 30px);
     grid-auto-flow: row;
     min-height: 0;
     min-width: 0;
+    position: relative;
+}
+
+#book-container > p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
 #remove-book {
     grid-row: 1 / 2;
     width: 20px;
+    position: absolute;
+    right: 12px;
+    top: 2px;
 }
 
 /* FORM */ 
@@ -165,7 +175,7 @@ h2 {
     right: 15vw;
     left: 15vw;
     margin: auto;
-    height: 400px;
+    height: 50vh;
     width: 600px;
     z-index: 3;
     background-color: rgba(255, 255, 255);
@@ -175,7 +185,7 @@ h2 {
 }
 
 #add-form > input {
-    height: 50px;
+    height: 25px;
 }
 
 #add-title {
