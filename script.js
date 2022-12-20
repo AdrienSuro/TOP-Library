@@ -20,7 +20,8 @@ function Book(title, name, year, rating) {
 //Function to add books to the DOM : 
 function displayBook(array) {
   mainContainer.innerHTML += 
-  `<div>
+  `<div id="book-container">
+      <img src="img/close.png" id="remove-book">
       <p>Title : ${array.title}</p>
       <p>Name : ${array.name}</p>
       <p>Year : ${array.year}</p>
