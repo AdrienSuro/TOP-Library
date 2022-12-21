@@ -13,27 +13,33 @@ function addRemoverToArray(remover) {
 };
 
 //Constructor
-function Book(title, name, year, rating) {
+function Book(title, name, year, rating, bookNr) {
   this.title = title;
   this.name = name;
   this.year = year;
   this.rating = rating;
+  this.bookNr = bookNr;
+  this.button = function() {
+    let test = document.getElementById(`remove-book${bookNr}`);
+    test.addEventListener("click", function() {
+      let zeta = getElementById(`book-containers${bookNr}`)
+      zeta.remove()
+    })
+}
 }
 
 function RemoverArray(bookNumber, targetCross) {
-  this.delete = document.getElementById(`book-container${bookNumber}`);
-  this.grab = document.getElementById(`remove-book${targetCross}`);
-  this.action = function() {
-    this.delete.remove()
-  };
+  this.delete = bookNumber;
+  this.grab = document.getElementById(`name`);
+  this.action = targetCross;
   this.event = function() {
     this.grab.addEventListener("click", this.action)
   }
+  console.log(removersArray);
 }
 
 //Function to add books to the DOM : 
 function displayBook(array) {
-  numberOfBooks += 1;
   mainContainer.innerHTML += 
   `<div id=book-container${numberOfBooks} >
       <img src="img/close.png" id="remove-book${numberOfBooks}">
@@ -61,12 +67,12 @@ closeForm.addEventListener("click", function hideForm() {
   addForm.style.display = 'none';
 });
 addToMyBooksButton.addEventListener("click", function grabBookInfo () {
-  addConstructorToArray(new Book(document.getElementById("title").value, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("rating").value));
   numberOfBooks += 1;
+  addConstructorToArray(new Book(document.getElementById("title").value, document.getElementById("name").value, document.getElementById("year").value, document.getElementById("rating").value, numberOfBooks));
   addRemoverToArray(new RemoverArray(numberOfBooks, numberOfBooks));
   addForm.style.display = 'none';
   mainContainer.innerHTML = "";
   constructorsArray.forEach(displayBook);
   addForm.reset();
+  console.log(constructorsArray);
 });
-
