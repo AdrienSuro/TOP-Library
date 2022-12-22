@@ -14,12 +14,12 @@ function Book(title, name, year, rating, bookNr) {
   this.year = year;
   this.rating = rating;
   this.bookNr = bookNr;
-}
+};
 
 //Function to add books to the DOM : 
 function displayBook(array) {
   mainContainer.innerHTML += 
-  `<div id=book-container} >
+  `<div id='book-container${array.bookNr}' >
       <img src="img/close.png" id="remove-book${array.bookNr}">
       <p>Title : ${array.title}</p>
       <p>Name : ${array.name}</p>
@@ -28,39 +28,19 @@ function displayBook(array) {
   </div>`
 };
 
-
 const mainContainer = document.getElementById("main-container");
 const addForm = document.getElementById("add-form");
 const addButton = document.getElementById("add-button");
 const closeForm = document.getElementById("close-form");
 const addToMyBooksButton = document.getElementById("addToMyBooks");
 
-
-/* Attempt to construct the delete functionality through a function. Will now try to write a loop :  
-
-  function removeIt() {
-  const removeBook = document.getElementById('remove-book');
-  if (removeBook) {removeBook.addEventListener("click", function removeFromArray() {
-  console.log(constructorsArray);  
-  mainContainer.innerHTML = "";
-  console.log(constructorsArray);  
-  constructorsArray.pop();
-  console.log(constructorsArray);
-  constructorsArray.forEach(displayBook);
-  console.log("Removing Works");
-})
-}
-}; */
-
 function addRemoverLoop() {
   for (let i=0; i<constructorsArray.length; i++) {
   let removeBtn = document.getElementById(`remove-book${i}`);
-  console.log(removeBtn);
-  console.log(constructorsArray);
+  let targetContainer = document.getElementById(`book-container${i}`);
   removeBtn.addEventListener("click", function() {
     constructorsArray.splice(i, 1);
-    console.log("The result after the splice is : ");
-    console.log(constructorsArray);
+    targetContainer.remove();
   });
 }
 }
@@ -79,7 +59,6 @@ addToMyBooksButton.addEventListener("click", function grabBookInfo () {
   addForm.style.display = 'none';
   mainContainer.innerHTML = "";
   constructorsArray.forEach(displayBook);
-  console.log(constructorsArray);
   addForm.reset();
   addRemoverLoop();
 });
