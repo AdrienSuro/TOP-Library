@@ -14,19 +14,20 @@ function Book(title, name, year, rating, bookNr) {
   this.year = year;
   this.rating = rating;
   this.bookNr = bookNr;
-};
+}
 
 //Function to add books to the DOM : 
 function displayBook(array) {
   mainContainer.innerHTML += 
   `<div id='book-container${array.bookNr}' >
-      <img src="img/close.png" id="remove-book${array.bookNr}">
+      <img src="img/close.png" id="remove-book${array.bookNr}" title="Remove book">
       <p>Title : ${array.title}</p>
       <p>Name : ${array.name}</p>
       <p>Year : ${array.year}</p>
       <p>Rating : ${array.rating}</p>
   </div>`
 };
+
 
 const mainContainer = document.getElementById("main-container");
 const addForm = document.getElementById("add-form");
@@ -43,7 +44,7 @@ function addRemoverLoop() {
     targetContainer.remove();
   });
 }
-}
+};
 
 addButton.addEventListener("click", function showForm() {
   addForm.style.display = 'grid';

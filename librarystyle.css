@@ -115,12 +115,6 @@ h2 {
     min-height: 0;
 }
 
-.main-container > div {
-    border: solid 2px var(--text-emphasis);
-    background-color: var(--background-light);
-    padding: 10px;
-}
-
 .section-title {
     display: grid;
     width: calc(40vw + 14rem);
@@ -144,11 +138,14 @@ h2 {
 
 [id^='book-container'] {
     display: grid;
-    grid-template-rows: 20px, repeat(4, 30px);
+    grid-template-rows: repeat(5, 30px);
     grid-auto-flow: row;
     min-height: 0;
     min-width: 0;
     position: relative;
+    border: solid 2px var(--text-emphasis);
+    background-color: var(--background-light);
+    padding: 10px;
 }
 
 #book-container > p {
@@ -156,7 +153,7 @@ h2 {
     margin-block-end: 0px;
 }
 
-#remove-book {
+[id^=remove-book] {
     grid-row: 1 / 2;
     width: 20px;
     position: absolute;
