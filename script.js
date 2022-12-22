@@ -38,11 +38,15 @@ const addToMyBooksButton = document.getElementById("addToMyBooks");
 function addRemoverLoop() {
   for (let i=0; i<constructorsArray.length; i++) {
   let removeBtn = document.getElementById(`remove-book${i}`);
+  console.log(removeBtn);
+  console.log(i);
   let targetContainer = document.getElementById(`book-container${i}`);
-  removeBtn.addEventListener("click", function() {
-    constructorsArray.splice(i, 1);
-    targetContainer.remove();
-  });
+  if (removeBtn) {
+    removeBtn.addEventListener("click", function() {
+      constructorsArray.splice(i, 1);
+      targetContainer.remove();
+      numberOfBooks -= 1;
+    })};
 }
 };
 
