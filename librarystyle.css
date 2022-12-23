@@ -25,7 +25,7 @@ h2 {
 
 .header {
     display: grid;
-    width: calc(40vw + 14rem);
+    width: calc(50vw + 14rem);
     height: calc(100px + 5vw);
     grid-template-columns: 2fr 8fr;
     grid-template-rows: 1fr 0.8fr;

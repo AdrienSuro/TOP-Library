@@ -37,15 +37,13 @@ const addToMyBooksButton = document.getElementById("addToMyBooks");
 function addRemoverLoop() {
   for (let i=0; i<constructorsArray.length; i++) {
   let removeBtn = document.getElementById(`remove-book${i}`);
-  console.log(removeBtn);
-  console.log(i);
   let targetContainer = document.getElementById(`book-container${i}`);
   removeBtn.addEventListener("click", function() {
+    if (removeBtn) {
     constructorsArray.splice(i, 1);
     targetContainer.remove();
     numberOfBooks -= 1;
-    i -= 1;
-    })};
+    }})};
 };
 
 addButton.addEventListener("click", function showForm() {
