@@ -28,7 +28,6 @@ function displayBook(array) {
   </div>`
 };
 
-
 const mainContainer = document.getElementById("main-container");
 const addForm = document.getElementById("add-form");
 const addButton = document.getElementById("add-button");
@@ -41,13 +40,12 @@ function addRemoverLoop() {
   console.log(removeBtn);
   console.log(i);
   let targetContainer = document.getElementById(`book-container${i}`);
-  if (removeBtn) {
-    removeBtn.addEventListener("click", function() {
-      constructorsArray.splice(i, 1);
-      targetContainer.remove();
-      numberOfBooks -= 1;
+  removeBtn.addEventListener("click", function() {
+    constructorsArray.splice(i, 1);
+    targetContainer.remove();
+    numberOfBooks -= 1;
+    i -= 1;
     })};
-}
 };
 
 addButton.addEventListener("click", function showForm() {
@@ -66,4 +64,4 @@ addToMyBooksButton.addEventListener("click", function grabBookInfo () {
   constructorsArray.forEach(displayBook);
   addForm.reset();
   addRemoverLoop();
-});
+}, false);
