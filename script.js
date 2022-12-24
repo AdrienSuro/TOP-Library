@@ -113,6 +113,13 @@ addToMyBooksButton.addEventListener("click", function (event) {
     }
     // Sinon, je renvoie input.value
     return input.value;
+
+    // On n'a pas besoin d'utiliser de else pour return input.value, car il est implicite
+    // Si input.type === "checkbox", alors la fonction retournera input.checked et s'arrêtera
+    // Si la fonction s'exécute jusqu'à la ligne 74, c'est qu'implicitement, input.type === "checkbox" ==> false
+    // Donc pas besoin de else
+    // En revanche, si on ne retournait pas de valeur en cas de input.type === "checkbox"
+    // Alors il aurait fallu le else, car peu importe le résultat de input.type === "checkbox" la fonction aurait continué son exécution et serait arrivée jusqu'à la ligne 74
   });
 
   // Maintenant, pour créer mon livre je vais avoir plusieurs possibilité, qui vont au final avoir le même résultat
